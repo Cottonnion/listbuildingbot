@@ -1,0 +1,26 @@
+
+
+.quick-reply-buttons {
+    margin-top: 10px;
+}
+
+span.quick-reply-button {
+    border: solid 1px #1bc2d3;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+
+/*Inline Chatboat*/
+#lbb-chat-main-wrapper.lbb-chattype-inline { position: relative; left: unset; right: unset; bottom: unset; margin: auto; }
+.botIconContainer.lbb-hide { display: none; }
+#lbb-chat-main-wrapper #lbb-app .lbb-app-wrapper .lbb-opened { margin-left: auto; margin-right: auto; }
+#lbb-chat-main-wrapper.lbb-chattype-inline #lbb-app .lbb-app-wrapper .lbb-opened .lbb-chat .lbb-chat-header-part .lbb-close{ display: none; }
+
+.lbb-chat-first-question-main.lbb-first-show_first_welcome {
+    cursor: pointer;
+}

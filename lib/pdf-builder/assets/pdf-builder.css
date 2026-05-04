@@ -1,0 +1,460 @@
+.admin_page_cpb_create_pdf_content_page .quiz-container { padding: 0; }
+.admin_page_cpb_create_pdf_content_page section.quiz-section.quiz_outer { margin: 0; } 
+.admin_page_cpb_create_pdf_content_page #wpcontent { padding: 0; }
+.admin_page_cpb_create_pdf_content_page .Quiz--tabs-outer .Quiz-left-tab-outer { background: #fff; }
+.admin_page_cpb_create_pdf_content_page .Quiz--tabs-outer { padding: 0; }
+.admin_page_cpb_create_pdf_content_page .Quiz--tabs-outer #Quiz-TabContent{ padding: 0; }
+/*.admin_page_cpb_create_pdf_content_page #student_home { position: sticky; top: 32px; }*/
+.admin_page_cpb_create_pdf_content_page #student_home { position: fixed; top: 32px; width: calc(100% - 390px); bottom: 0; }
+
+.admin_page_cpb_create_pdf_content_page .update-nag.notice { display: none; }
+.admin_page_cpb_create_pdf_content_page #wpfooter { display: none; }
+
+
+.cpb-pdf-generator-main .gpt-field-main-wrapper.cpb-ai-style-normal { display: flex; flex-direction: column;  }
+.cpb-pdf-generator-main { background: #ebecf0; padding: 0; height: calc(100vh - 105px); }
+.cpb-new-btn { background: #fff261; cursor: pointer; margin: 0 5px; color: #000; border: none; outline: none!important; padding: 15px 15px; min-width: 120px; font-size: 17px; line-height: 1; border-radius: 5px; font-weight: 600; }
+.cpb-new-btn:hover{ color:#000; text-decoration: none!important; box-shadow: none; outline: none; background: #ffcd00;}
+.cpb-pdf-generator-main-container { position: relative; height: 100%; }
+.cpb-ai-style-quiz-common-info { position: relative; height: 100%; display: none; flex-direction: column; justify-content: center; align-content: center; flex-wrap: nowrap; max-width: 960px; width: 100%; text-align: center; align-items: center; padding: 20px 20px 160px; }
+.cpb-ai-style-quiz-common-info.cpb-ai-active-screen { display: flex; margin: auto; }
+.cpb-ai-style-quiz-common-info h2.cpb-ai-style-section-heading { font-size: 31px; font-weight: 800; margin-top: 30px;}
+.cpb-ai-style-quiz-common-info p.cpb-ai-style-section-content { font-size: 20px; font-weight: 500; margin-bottom: 30px; }
+.cpb-ai-style-section-content { display: flex; align-items: center; gap: 0px; justify-content: center; }
+.cpb-ai-style_form_input { display: flex; flex-direction: column; gap: 0px; align-items: center; margin-top: 0px; }
+.cpb-ai-style_form_input_wrapper { margin-top: 0px; display: flex; flex-direction: column; align-items: center; width: 100%; text-align: left; }
+.cpb-pdf-generator-main .lbb-form-group .lbb-input-field{ background-color: #fff; }
+.lbb-form-group.lbb-chatboat-video-img-text { width: 100%; }
+.lbb-chatflow-save-action.chatflow-save-action-400{ width: 400px; }
+
+.gpt-field-main-wrapper { width: 740px; margin: 0 auto 20px; text-align: left; }
+.gpt-field-main-wrapper label.control-label { margin-bottom: 5px; font-weight: 600; font-size: 18px; }
+.cpb-ai-style-field-input { width: 100%; padding: 5px 10px; border: 2px solid gainsboro; font-size: 16px; border-radius: 5px; outline: none!important; box-shadow: none; }
+.cpb-ai-style-quiz-common-info > img{ max-width: 100%; height: auto; text-align: center; margin-bottom: 20px; max-width: 80px; }
+
+.save-pdf-btn-outer { position: absolute; top: 0; right: 0; display: flex; padding: 10px; left: 0; width: 100%; background: #fff; justify-content: space-between; align-items: center; }
+
+.cpb-header-how-it-work .toll-tip-desc.rank_tag.custom-field { max-width: 400px; z-index: 99999; top: -9px; }
+.cpb-header-how-it-work .cpb-shortcode-heading > span { font-weight: 600; font-size: 18px; }
+.cpb-header-how-it-work .cpb-shortcode-heading .toll-tip-desc.rank_tag.custom-field p { font-size: 15px; text-align: left; line-height: 1.2; margin-bottom: 8px; }
+
+.save-pdf-btn-outer .cpb-new-btn { display: block; text-align: center; font-size: 16px; padding: 10px; min-width: 100px; }
+.save-pdf-btn-outer a.pdf-content-back.cpb-new-btn, .cpb-ai-style-quiz-start-screen .pdf-back-btn { background: gray; color: #fff; }
+.save-pdf-btn-outer .btn-right-side { display: flex; }
+
+.pdf-content-wrapper { text-align: center; background: #f5f8fa; padding: 40px 70px; border-radius: 10px; }
+.pdf-content-wrapper button.cpb-new-btn.pdf-next-btn { margin-top: 40px; }
+
+.cpb-ai-style-form-template-wrapper{ width: 700px; margin-left: auto;margin-right: auto;}
+.cpb-ai-style-item-main-box{ display: flex; width: 100%; gap: 20px; }
+.cpb-ai-style-item-inner{ width: 50%; padding: 10px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); transition: all 0.5s; position: relative; }
+.cpb-ai-style-item-text{ padding: 10px 0; }
+.cpb-ai-style-item-text h2{ font-size: 20px; margin-bottom: 20px; }
+.cpb-ai-style-item-text p{ font-size: 16px; }
+
+
+div#cpb-pdf-generator-screen { position: relative; height: 100%; max-width: 100%; }
+.pdf-slide-box-create-box { background: #fff; padding: 20px; width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0 2px 8px rgba(14,19,24,.07); height: calc(100%); display: flex; flex-direction: column; align-items: center; justify-content: center; display: none; }
+.pdf-slide-box-create-box.cpb-ai-active {display: flex; }
+.pdf-slide-box-create-box-a4-size { background: #fff; padding: 20px; width: 100%; margin-left: auto; margin-right: auto; box-shadow: 0 2px 8px rgba(14,19,24,.07); height: calc(100%); display: none; flex-direction: column; align-items: center; justify-content: center; /*width: calc(80vh * 0.707); height: 80vh; max-height: calc(100vh - 270px);*/ width: calc(calc(100vh - 270px) * 0.707); height: calc(100vh - 270px); }
+.pdf_landscape_view .pdf-slide-box-create-box-a4-size { width: calc(60vh / 0.707); height: 60vh; max-height: calc(100vh - 310px); }
+.cpb-pdf-generator-main *, .cpb-pdf-generator-main ::after, .cpb-pdf-generator-main ::before { box-sizing: border-box; }
+
+.pdf-slider-box { /*outline: 2px solid #8b3dff; */ border-radius: 12px; box-shadow: inset 0 0 0 1px #fff, inset 0 0 0 2px rgba(57,76,96,.15), inset 0 0 0 2px #fff; background-color: #fff; padding: 10px; position: relative; width: 100px; height: 60px; background-size: cover; border: 5px solid white; box-shadow: none; }
+.pdf-slider-box.active { outline: 2px solid #8b3dff; } 
+
+.pdf-slide-sticky-bottom-page-preview-box { display: flex; gap: 10px; counter-reset: div-number; justify-content: flex-start; overflow-y: hidden; overflow-x: auto; padding: 2px; }
+.pdf-slider-box { border: 2px solid #ffea00; border-radius: 12px; box-shadow: inset 0 0 0 1px #fff, inset 0 0 0 2px rgba(57,76,96,.15), inset 0 0 0 2px #fff; background-color: #fffbcb; padding: 10px; position: relative; width: 120px; height: 70px; background-size: cover; display: flex; align-items: center; justify-content: center; cursor: pointer; min-width: 70px; }
+.pdf-slider-box:after { position: absolute; bottom: 5px; left: 5px; z-index: 99; background: #fff261; display: flex; width: 20px; height: 20px; counter-increment: div-number; content: " " counter(div-number); border-radius: 10px; justify-content: center; align-items: center; font-weight: 600; }
+.pdf-slide-sticky-bottom-page { position: absolute; left: 0; bottom: 0; right: 0; background: #fff; border-top: 10px solid #ebecf0; padding: 20px; }
+.pdf-slider-box:last-child:after { content: none; }
+button.add-slide-btn { width: 100%; height: 100%; position: absolute; background: no-repeat; border: none; outline: none; }
+
+.pdf-slider-box.pdf-slide-text:before { content: 'Text Slide'; font-weight: 600; color: gray; font-size: 15px; }
+
+.pdf-slide-box-create-box-a4-size { position: relative; }
+.cpb-pdf-img { width: 100%; height: 100%; }
+.pdf-slide-box-create-box-a4-size.cpb-ai-active { display: flex; }
+.cpb-pdf-img img { width: 100%; object-fit: cover; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; }
+.pdf-slide-append-main .action-btn-wrapper { position: absolute; z-index: 99; top: 10px; right: 10px; }
+.pdf-slide-append-main .pdf-screen-content .action-btn-wrapper { top: 5px; right: 4px; }
+
+
+.action-btn-wrapper button { border: none; background: #2196F3; color: #fff; border-radius: 20px; width: 30px; height: 30px; font-size: 16px; cursor: pointer; }
+.action-btn-wrapper button.delete-img { background: red; }
+.action-btn-wrapper button:hover { background: #000000; }
+
+.pdf-screen-content { width: 100%; overflow-x: hidden; overflow-y: auto; padding: 0 0 0px;  }
+.pdf-screen-content h3.section_heading { font-weight: 600; font-size: 16px; margin: 0; border-bottom: 1px solid gainsboro; display: block; width: 100%; text-align: left; padding: 10px; background: #fffbcb; }
+.pdf-slide-box-create-box-a4-size.cpb-ai-active.pdf-screen-content { display: block; }
+.pdf-screen-content .col-sm-10 { padding: 0; width: 100%; max-width: 100%; flex: unset; margin: 0!important; }
+.pdf-screen-content .form-group.row.mb-4.ml-4 { width: 100%; margin: 0!important; padding: 10px; }
+.pdf-screen-content button.btn.btn-info.save-content-data { display: none; }
+
+.cpb-ai-style-quiz-start-screen.cpb-ai-style-screen.cpb-ai-style-quiz-common-info { padding: 0; }
+.empty-name-error {color: #f34141; }
+
+.personalize_options.pdf-personalize-btn { text-align: right; display: block; margin-right: 10px; }
+
+.cpb-popup-shortcode-list .addtoeditor {background: #f9f9f9;margin-bottom: 10px;border-radius: 5px;}
+.cpb-popup-shortcode-list .addtoeditor .cpb-shortcode-heading { font-size: 16px; font-weight: 800; background: #fffbc9; padding: 4px 10px; border-radius: 5px 5px 0 0; }
+.cpb-popup-shortcode-list .addtoeditor .cpb-shortcode-merge-tag-wrapper { display: flex; gap: 20px; align-items: center; padding: 5px 10px; }
+.cpb-popup-shortcode-list .addtoeditor .cpb-shortcode-merge-tag-wrapper span.copy-btn { background: #fff261; cursor: pointer; margin: 0 5px; color: #000; border: none; outline: none!important; padding: 8px 15px; font-size: 15px; line-height: 1; border-radius: 5px; font-weight: 600; display: flex; gap: 10px; align-items: center; }
+.cpb-popup-shortcode-list .addtoeditor .shortcode_display { font-size: 14px; font-weight: 500; }
+.Manage_Side_Popup.personality_side_popup_options_wrapper.quiz-form-side-popup h4.main-title { color: #fff; background: #000000; }
+.tool-tip .fa { background: transparent; }
+a.cpb-new-btn.btn-pdf-avalible-tags-popup { padding: 5px 10px; font-size: 15px; margin: 0; background: #000; color: #fff; }
+a.cpb-new-btn.btn-pdf-avalible-tags-popup:hover {background: #fff261;}
+p.cpb-ai-style-section-content.cpb-alert { margin-top: 20px; background: #fffbc9; padding: 10px; font-size: 17px!important; text-align: left; border-left: 5px solid; flex-direction: column; align-items: flex-start; }
+#cpb-pdf-thankyou-screen h2.cpb-ai-style-section-heading { margin-bottom: 20px; }
+
+a.cpb-gotolist.cpb-new-btn { background: #ffcd00; }
+a.cpb-gotolist.cpb-new-btn:hover { background: #fff261; }
+.downloading-pdf { pointer-events: none; }
+.pdf-content-wrapper .preview-wrapper { display: flex; align-items: center; justify-content: center; gap: 10px;}
+.cpb_member_page_table_wrapper .clone_pdf_content_by_id {color: #fff;margin-left: 4px; }
+
+.pdf_avalible_tags_popup_options_wrapper .cpb-new-accordion-header { background: #000000; border-color: #000000; padding: 10px; color: #fff; }
+.pdf_avalible_tags_popup_options_wrapper .cpb-new-accordion-item.active .cpb-new-accordion-content { padding: 10px; background: #ececec; }
+
+p.cpb-ai-style-section-content.cpb-alert-popup.cpb-alert { margin: 0; background: #ffe4e4; color: red; }
+.cpb-shorcode-error { padding-top: 15px; background: #ececec; padding-bottom: 10px; }
+
+.pdf-content-data.js-select2-wrapper span.select2.select2-container.select2-container--default { width: 100%!important; }
+
+
+/* AI */
+
+.aid-mt-5{ margin-top:5px!important; }
+.aid-mt-10{ margin-top:10px!important; }
+.aid-mt-15{ margin-top:15px!important; }
+.aid-mt-20{ margin-top:20px!important; }
+.aid-mt-25{ margin-top:25px!important; }
+.aid-mt-30{ margin-top:30px!important; }
+
+.aid-mb-5{ margin-bottom:5px!important; }
+.aid-mb-10{ margin-bottom:10px!important; }
+.aid-mb-15{ margin-bottom:15px!important; }
+.aid-mb-20{ margin-bottom:20px!important; }
+.aid-mb-25{ margin-bottom:25px!important; }
+.aid-mb-30{ margin-bottom:30px!important; }
+
+
+.ai-course-creation-row { display: flex; flex-direction: row; gap: 20px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.course-type-selection { display: flex; flex-direction: column; width: 50%; background: #fff261; padding: 40px 20px; border: 3px solid transparent; border-radius: 4px; align-items: center; cursor: pointer; }
+.modal.cpbpdf-modal-full-screen .ai-course-creation-body .modal-body-inner-wrapper { padding: 0; background: transparent; width: 100%; }
+.course-type-selection img { max-width: 120px; margin: 0 auto 30px; }
+.course-type-selection h3 { font-size: 20px; font-weight: 700; text-align: center; }
+.modal.cpbpdf-modal-full-screen .modal-body.ai-course-creation-body { width: 1000px; max-width: 1000px; position:unset; }
+.cpbpdf-ai-screen-list, .cpbpdf-ai-screen-list-product { text-align: center; }
+.cpbpdf-ai-screen-list, .cpbpdf-ai-screen-list-product{ display:none; }
+.cpbpdf-ai-screen-list.cpbpdf-ai-active-screen, .cpbpdf-ai-screen-list-product.cpbpdf-ai-active-screen{ display:block; }
+
+.cpbpdf-ai-quiz-start-screen {text-align: center;}
+h2.cpbpdf-ai-section-heading { font-size: 35px; font-weight: 700; margin-bottom: 0; margin-top: 0; }
+p.cpbpdf-ai-section-content { font-size: 18px; /*font-weight: 600;*/ text-align: left; margin-bottom: 0; }
+.cpbpdf-ai-btn { background: #fff261; cursor: pointer; margin: 0 5px; color: #000; border: none; outline: none!important; padding: 15px 30px; font-size: 18px; line-height: 1; border-radius: 5px; font-weight: 600; }
+.cpbpdf-ai-btn:hover { background: #ffcd00; }
+.cpbpdf-ai-btn-btn-alternative { background: #ffcd00; }
+.cpbpdf-ai-btn:visited{ color:#000; }
+a.cpbpdf-ai-btn { text-decoration: none; }
+
+
+.cpbpdf-ai-item-inner { width: calc(50% - 16px); padding: 10px; background: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); transition: all 0.5s; position: relative; }
+.cpbpdf-ai-item-main-box { display: flex; width: 100%; gap: 20px; }
+.cpbpdf-ai_form_template_wrapper { max-width: 700px; margin-left: auto; margin-right: auto; }
+.cpbpdf-ai-video-btn-wrapper { position: absolute; right: 10px; top: 80px; }
+.cpbpdf-ai-item-text h2, .cpbpdf-ai-item-text h3 { font-size: 20px; margin-bottom: 20px; font-weight: 600; }
+.cpbpdf-ai-item-text p,
+.cpbpdf-ai-item-text .p-tag-format { min-height: 100px; font-size: 16px; }
+
+.cpbpdf-ai-field-row label.control-label { display: block; margin-bottom: 5px; font-weight: 700; font-size: 17px; text-align: left; }
+.cpbpdf-ai-field-row .cpbpdf-ai-field-input { width: 100%; padding: 10px 10px; border: 2px solid gainsboro; font-size: 15px; border-radius: 5px; outline: none!important; box-shadow: none; }
+.cpbpdf-ai-field-row .cpbpdf-ai-field-input:hover,
+.cpbpdf-ai-field-row .cpbpdf-ai-field-input:focus{ background: #fff; }
+.aid-max-700 { max-width: 700px; margin-left: auto; margin-right: auto; }
+.cpbpdf-justify-content-space-between{ display:flex; justify-content: space-between; align-items: center;}
+.cpbpdf-ai-field-row .cpbpdf-ai-small { padding: 5px 10px; }
+
+
+label.gpt-alert-box { background: #d5e5ed; width: 100%; padding: 8px; border-left: 5px solid; color: #257396; font-weight: 600!important; text-align:left; margin: 0; }
+.cpbpdf_ai_prompt_format_wrapper .code-container { position: relative; background-color: #000; color: #fff; border-radius: 5px; }
+.cpbpdf_ai_prompt_format_wrapper .code-container .copy-icon { display: flex; gap: 5px; cursor: pointer; color: #fff; font-weight: 700; align-items: center; justify-content: flex-end; font-size: 14px; border: 2px solid #000; width: max-content; margin-left: auto; padding: 5px 10px; border-radius: 5px; background: #000; }
+.cpbpdf_ai_prompt_format_wrapper .code-container .copy-icon:hover { background: #FF9800; border-color: #FF9800; }
+.cpbpdf_ai_prompt_format_wrapper .code-container code { display: block; text-align: left; font-family: Consolas, monospace; font-size: 14px; line-height: 1.5; white-space: pre; overflow-x: auto; padding: 20px; color: #fff; }
+.aiq-copy-btn-wrapper { background: #fff261; width: 100%; padding: 7px 10px; border-radius: 5px 5px 0 0; }
+.cpbpdf_ai_prompt_format_wrapper .code-container .copy-icon i { font-style: normal; }
+button.cpbpdf-ai-btn.btn-copy-propmpt { background: rgb(0, 124, 137); color: #fff; }
+.cpbpdf-ai-btn i {font-style: normal;}
+
+button.cpbpdf-ai-btn.cpbpdf-ai-btn-underline { background: transparent; color: #000; padding: 6px 5px; border-bottom: 2px solid; border-radius: 0; line-height: 1; font-size: 16px; }
+button.cpbpdf-ai-btn.cpbpdf-ai-btn-underline:hover { background: #000; color: #fff; }
+.cpbpdf-ai-title-wrapper { text-align: right; margin-top: 5px; }
+
+textarea.cpbpdf_ai_prompt_textarea { width: 100%; min-height: 300px; padding: 5px 10px; border: 2px solid gainsboro; font-size: 15px; border-radius: 5px; outline: none!important; box-shadow: none; }
+
+.cpbpdf-ai-quiz-outcomeprompt-response { margin-top: 30px; background: #fff; padding: 20px; }
+.chatgpt-results-inner { position: relative; background: #fff; text-align: left; margin-bottom: 20px; border-radius: 5px; }
+input[type=checkbox].quiz_checkbox { position: absolute; top: 0; left: 0; opacity: 0; width: 100%; height: 100%; z-index: 999; cursor: pointer; }
+.cpbpdf-ai-single_quiz_card { background: whitesmoke; -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -o-transition: all 0.3s linear; -ms-transition: all 0.3s linear; -khtml-transition: all 0.3s linear; transition: all 0.3s linear; padding: 15px; border-radius: 5px; }
+.chatgpt-results-inner .cpbpdf-ai-single_quiz_card h3 { font-size: 20px; padding-left: 30px; margin-top: 6px; }
+.chatgpt-results-inner .cpbpdf-ai-single_quiz_card p { font-size: 13px; line-height: 1.5; margin: 1em 0; }
+.cpbpdf-ai-single_quiz_card:after { content: "\f096"; font-family: FontAwesome; font-weight: normal; font-style: normal; text-decoration: inherit; position: absolute; top: 17px; left: 10px; font-size: 30px; }
+.quiz_checkbox:checked ~ .cpbpdf-ai-single_quiz_card:after { content: "\f14a"; font-size: 29px; }
+
+.cpbpdf-ai-outline-with-btn li { padding: 15px; text-align: left; width: 100%; }
+.cpbpdf-ai-outline-with-btn li:nth-child(odd) { background: #fff; }
+.cpbpdf-ai-outline-with-btn li:nth-child(even) { background: gainsboro; }
+.cpbpdf-ai-outline-with-btn { display: flex; flex-direction: row; justify-content: space-between; width: 100%; align-items: center; }
+.cpbpdf-ai-outline-with-btn ul { width: 100%; }
+.cpbpdf-ai-outline-with-btn span { font-weight: 600; font-size: 16px; width: calc(100% - 160px); }
+.cpbpdf-ai-outline-with-btn .cpbpdf-ai-content-btn { background: #FF9800; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: 600; text-decoration: none; width: 140px; text-align: center; }
+.cpbpdf-ai-outline-with-btn .cpbpdf-ai-content-btn:hover { background: #000; }
+
+
+.Manage_Side_Popup.cpbpdf-ai-form-side-popup{ z-index: 111111; }
+.cpbpdf_sidebar_popup.cpbpdf-ai-form-side-popup h4 { font-family: 'DM Sans',sans-serif; padding: 15px 20px; border: none; margin: 0; background: none; font-size: 21px; line-height: 1.4; color: #333; background-color: #d0eaff; font-weight: 700; border-bottom: 1px solid #eee; position: relative; }
+.Manage_Side_Popup.cpbpdf-ai-form-side-popup .close_Side_Popup { top: 10px; right: 10px; }
+.aiq-popup-field-outer { padding: 20px; text-align: center; }
+
+.chatgpt-results-inner .cpbpdf-ai-single_quiz_card h5 { font-size: 14px; padding-left: 30px; border-bottom: 1px solid gainsboro; padding-bottom: 10px; line-height: 1; font-weight: 600; }
+
+#CreateAICourseModalNew.cpbpdf-modal-full-screen .modal-content{ overflow: auto; }
+.quiz_checkbox:checked ~ .cpbpdf-ai-single_quiz_card { background: #fff8bd; }
+
+
+#cpbpdf-ai-outline-html-container .module { text-align: left; }
+.module { text-align: left; margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+.module > .checkbox-label { font-weight: bold; margin-bottom: 10px; background: #e9e9e9; padding: 10px; width: 100%; margin-left: 0; font-size: 18px; }
+.lesson { margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
+.lesson-title { font-weight: bold; width: 100%; }
+.checkbox-label { display: inline-block; vertical-align: middle; margin-left: 5px; }
+.checkbox-label::before { /* content: ""; */ display: inline-block; width: 16px; height: 16px; background-color: #fff; border: 1px solid #ccc; border-radius: 3px; vertical-align: middle; margin-right: 5px; cursor: pointer; }
+.checkbox-label input[type="checkbox"] { display: none; }
+.checkbox-label input[type="checkbox"]:checked + span::before { background-color: #ffc107; border-color: #ffc107; }
+.checkbox-label span { display: inline-block; vertical-align: middle; color: #333; }
+.lesson-title label { margin-bottom: 0; }
+/*.checkbox-label { display: flex; align-items: center; margin-bottom: 5px; cursor: pointer; }
+.checkbox-input { display: none; }
+*/
+.checkbox-custom { width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 4px; margin-right: 10px; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s, border-color 0.3s; }
+.checkbox-label:hover .checkbox-custom { border-color: #ffc107; }
+.checkbox-input:checked + .checkbox-custom { background-color: #ffc107; border-color: #ffc107; }
+.checkbox-label span { color: #333; }
+
+.checkbox-label span { width: calc(100% - 160px); }
+.checkbox-label span i { display: block; font-size: 13px; line-height: 1.2; font-weight: 400; }
+
+#cpbpdf-ai-module-lesson-container .checkbox-label { cursor: unset; }
+
+/*#cpbpdf-ai-module-lesson-container .module { border: 0; border-radius: 0; padding: 0; } #cpbpdf-ai-module-lesson-container { padding: 0; }*/
+
+#cpbpdf-ai-module-lesson-container .checkbox-label { cursor: unset; }
+
+a.add-content-lesson { background: #fff261; color: #000; font-size: 13px; width: 160px; text-align: center; padding: 8px 5px; line-height: 1; border-radius: 5px; border: none; outline: none; box-shadow: none; text-decoration: none; }
+a.add-content-lesson:hover { background: #000;  color: #fff;}
+
+.cpbpdf-ai-form-side-popup .Manage_Side_Popup-inner{ overflow: auto; }
+input.cpbpdf_ai_paid_free_product_inn,
+input.cpbpdf_ai_paid_free_product_inn_product { display: none; }
+.cpbpdf-ai-hide{ display:none; }
+span.error-text { text-align: left; display: block; font-size: 14px; color: red; font-weight: 600; }
+.cpbpdf-ai-field-row .radiobtn { top: 2.5px; }
+.cpbpdf-ai-field-row label.checkcontainer { margin-bottom: 0; font-size: 16px; font-weight: 600;}
+
+.cpbpdf-ai-field-column { display: flex; gap: 10px; }
+.cpbpdf-ai-field-row-sub { width: 33%; }
+.cpbpdf-ai-field-row-sub select.form-control.cpbpdf-ai-field-input.select_access { max-width: 100%!important; }
+.cpbpdf-ai-field-row-sub .in_days_text { width: 100px; font-weight: 600; }
+.view-content-lesson{ display:none; }
+.view-content-lesson.ai-show-btn{ display:block; }
+.cpbpdf-ai-product-download-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+.add-content-lesson-btn { width: 200px; display: flex; gap: 10px; align-items: center; justify-content: flex-end; }
+a.view-content-lesson .fa { color: #fff; font-size: 18px; background: #FF5722; padding: 5px 7px; border-radius: 6px; }
+a.view-content-lesson .fa:hover { background: #000; }
+
+.cpbpdf-ai-congratulation-text-wrapper p { font-size: 22px; margin-bottom: 50px; display: block; }
+.cpbpdf-ai-final-btn { display: flex; }
+a.cpbpdf-ai-btn.btn-download-pdf { background: #ffcd00; }
+a.cpbpdf-ai-btn.btn-download-pdf:hover { background: #fff261; }
+
+.cpbpdf-ai-final-btn > a { color: #000; text-decoration: none; }
+.btn-view-course { background: gainsboro; }
+.cpbpdf_ai_prompt_format_wrapper .code-container code span { color: red; }
+button.cpbpdf-ai-btn:disabled { opacity: 0.3; cursor: no-drop; }
+.course-popup-style.cpbpdf-modal-full-screen.modal { z-index: 999!important; }
+
+.show-in-same-line.cpbpdf-ai-title-wrapper { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.show-in-same-line.cpbpdf-ai-title-wrapper .cpbpdf-ai-btn-underline.cpbpdf-ai-btn.cpbpdf-ai-generate-title { padding: 6px 5px; }
+
+.cpbpdf-ai-title-prompt-wrapper { display: flex; align-items: stretch; }
+.cpbpdf-ai-title-prompt-wrapper .chatgpt-btn { width: 150px; background: rgb(0, 124, 137); color: #fff; border: none; border-radius: 0 5px 5px 0; font-size: 16px; }
+.cpbpdf-ai-title-prompt-wrapper #cpbpdf_ai_prompt_title_quiz_subject_mprompt { border-radius: 5px 0 0 5px; border-right: 0; }
+.cpbpdf-ai-title-generator-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+a.add-more-lessons-btn { font-size: 14px; width: 200px; background: #000; color: #fff; padding: 5px; text-align: center; border-radius: 5px; text-decoration: none; }
+a.add-more-lessons-btn:hover { background: #fff261; color: #000; }
+.modal.cpbpdf-modal-full-screen.ai-product-creation-main .modal-content{ background: rgb(255,252,235); }
+.modal.cpbpdf-modal-full-screen.ai-product-creation-main-product .modal-content{ background: rgb(255,252,235); }
+
+.popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: none; z-index: 9999; }
+.popup-container { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+.popup-message { margin-bottom: 10px; }
+.popup-buttons { text-align: right; }
+.popup-buttons button { margin-left: 10px; }
+
+.cpbpdf-ai-btn-gray { background: gainsboro; color: #000;}
+.popup-overlay .cpbpdf-ai-btn { padding-top: 10px; padding-bottom: 10px; }
+div.popup-buttons { margin-top: 15px; }
+div.popup-message { font-size: 16px; font-weight: 600; border-bottom: 2px solid gainsboro; padding-bottom: 20px; }
+.popup-message h4 { font-weight: 600; margin-bottom: 20px; }
+.popup-message strong { font-weight: 700; }
+
+
+button.cpbpdf-ai-btn.cpbpdf-ai-btn-add-more-module { background: #000; color:#fff!important; }
+.popup-content .aid-max-700 { width: 700px; }
+
+.cpbpdf-ai-quiz-heading { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.cpbpdf-ai-quiz-heading img { max-width: 60px; }
+.cpbpdf-ai-quiz-heading h2 { margin: 0!important; text-align: left;}
+div .cpbpdf-ai-section-heading.font-22{ font-size:22px; }
+.ai-width-100{ width:100%!important; }
+textarea#cpbpdf_ai_course_prompt_product { min-height: 170px; }
+p.cpbpdf-ai-section-descriptin { text-align: left; font-size: 18px; font-style: italic; margin-bottom: 0;}
+#cpbpdf_ai_course_prompt { height: 250px; }
+.course-popup-style .modal-header { background: #fff261; color: #000; }
+button.add_new_lesson_btn_for_ai.padding-b{ padding:10px; }
+
+#Manage_Side_Popup_AI_Lessons .cpbpdf-ai-item-text { text-align: center; padding: 10px; }
+#Manage_Side_Popup_AI_Lessons .cpbpdf-ai_form_template_wrapper { max-width: 100%; }
+
+a.cpbpdf-ai-btn.edit-add-lesson-content-btn { padding: 10px 20px; color: #000; font-size: 16px; display: block; text-decoration: none; }
+
+.ai-product-creation-main.ai-flow-api .ai-showonly-manual{display:none;}
+.ai-product-creation-main.ai-flow-manual .ai-showonly-api{display:none;}
+.ai-product-creation-main-product.ai-flow-api .ai-showonly-manual{display:none;}
+.ai-product-creation-main-product.ai-flow-manual .ai-showonly-api{display:none;}
+
+.edit-cpbpdf-ai-main-screen.ai-flow-api .ai-showonly-manual{display:none;}
+.edit-cpbpdf-ai-main-screen.ai-flow-manual .ai-showonly-api{display:none;}
+
+#edit-cpbpdf-ai-content-generator.ai-flow-api .ai-showonly-manual{display:none;}
+#edit-cpbpdf-ai-content-generator.ai-flow-manual .ai-showonly-api{display:none;}
+
+.cpbpdf-ai-item-text p a,
+.cpbpdf-ai-item-text .p-tag-format a { color: #ff582b; color: #ffcd00; text-decoration: underline; font-weight: 600; }
+.cpbpdf_sidebar_popup.cpbpdf-ai-form-side-popup h4 { background: #fff261; }
+
+.cpbpdf-ai-field-row .cpbpdf_sidebar_popup.cpbpdf-ai-form-side-popup h4 { background: #fff261; }
+.cpbpdf-ai-field-row .checkcontainer input:checked ~ .radiobtn { background-color: #fff261; border-color: #fff261; }
+.cpbpdf-ai-field-row .checkcontainer .radiobtn:after { background: #000; }
+.cpbpdf-ai-field-row .radiobtn { border-color: #000000; }
+
+
+.ai-popup-new-style .Manage_Side_Popup-inner { background: #fffceb; }
+.ai-popup-new-style .Manage_Side_Popup-inner > h2 { background: #fff261; }
+.ai-popup-new-style { width: 860px; }
+
+#edit-cpbpdf-ai-content-generator h2.cpbpdf-ai-section-heading,
+#edit-cpbpdf-ai-content-generator .cpbpdf-ai-item-text h2{ background: transparent; color: #000; border: none; padding: 0; }
+#edit-cpbpdf-ai-content-generator .cpbpdf-ai-item-inner { padding: 20px 10px; }
+.ai-popup-new-style.sidebar_global_design .Manage_Side_Popup_content { padding-left: 30px; padding-right: 30px; }
+
+
+.alert-red-section { background: #ffeeee; color: red; text-align: left; padding: 10px; border-left: 5px solid; font-size: 17px!important; }
+.aid-max-750 { max-width: 750px; margin: 0 auto; }
+.aid-max-550 { max-width: 550px; margin: 0 auto; }
+.aid-max-650 { max-width: 650px; margin: 0 auto; }
+
+.cpbpdf-ai-licencetitle {display: block;font-size: 17px;font-weight: 600;margin-bottom: 30px;}
+a.cpbpdf-ai-btn { display: block; max-width: max-content; margin: 0 auto; color: #000; }
+.cpbpdf-ai-licence-box {width: calc(50% - 10px);background: #fff;padding: 20px;border-radius: 5px;}
+/*.cpbpdf-ai-licence-wrapper {max-width: 650px;margin-left: auto;margin-right: auto;display: flex;gap: 20px;}*/
+.cpbpdf-ai-licence-wrapper {display: flex; justify-content: center; max-width: 660px; margin: 0 auto;}
+a.cpbpdf-ai-btn.cpbpdf-ai-activate-btn { background: #ffcd00; }
+a.cpbpdf-ai-btn.cpbpdf-ai-activate-btn:hover { background: #fff261; }
+.alert-red-section a { color: red; text-decoration: underline; }
+.ai-popup-new-style p.cpbpdf-ai-section-content.cpbpdf-update-msg-on-error { margin-top: 10px; }
+
+.cpbpdf-ai-screen-list-product .ai-course-creation-row { gap: 40px; }
+.course-type-selection p { margin-bottom: 0; font-style: italic; color: gray; }
+
+
+.cpbpdf-ai-btn-purchase-wrapper { display: flex; gap: 20px; justify-content: center; flex-direction: row; }
+.cpbpdf-ai-btn-purchase-wrapper a.cpbpdf-ai-btn.cpbpdf-purchase-btn { margin: 0; }
+.cpbpdf-ai-licence-box-btn { width: 660px; margin: 0 auto; background: #fff; padding: 20px; }
+.cpbpdf-ai-licence-box { width: 100%; }
+
+
+.image-upload { display: block; text-align: center; width: 50%; }
+.upload-label { display: block; cursor: pointer; padding: 10px; background-color: #f6f6f6; border: 2px dashed #ccc; border-radius: 4px; transition: border-color 0.3s ease; min-height: 150px; display: flex; align-items: center; flex-direction: column; justify-content: center; }
+.upload-label:hover { border-color: #999; } .upload-icon { font-size: 24px; margin-bottom: 5px; }
+.upload-text { font-weight: bold; }
+.image-preview { width: 100%; min-height: 150px; border: 1px solid #ccc; background-color: #f7f7f7; margin-top: 10px; display:none; }
+.delete-image { display: none; cursor: pointer; color: #f00; margin-top: 5px; }
+.delete-image:hover { text-decoration: underline; }
+.image-upload-wrapper { display: flex; gap: 20px; justify-content: center; }
+.image-upload > input { display: none; }
+.image-upload.image-uploaded .upload-label { display: none; }
+.image-upload.image-uploaded .image-preview { display: block; }
+.image-upload.image-uploaded .delete-image { display: block; }
+
+
+button.add_new_lesson_btn_for_ai { background: #fff261; color: #000; border-color: #fff261; font-size: 13px !important; font-weight: 700; transition: .4s; box-shadow: none !important; border-radius: 4px; }
+
+.cpbpdf_ai_title_generate_api.ai-showonly-api ul,
+.cpbpdf_ai_title_generate_api_product.ai-showonly-api ul  { text-align: left; display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; }
+.cpbpdf_ai_title_generate_api.ai-showonly-api li,
+.cpbpdf_ai_title_generate_api_product.ai-showonly-api li { width: calc(50% - 10px); background: #fffab8; padding: 10px; border-radius: 5px; font-size: 17px; cursor: pointer; }
+.cpbpdf_ai_title_generate_api.ai-showonly-api li::before,
+.cpbpdf_ai_title_generate_api_product.ai-showonly-api li::before { font-family: "Font Awesome 5 Free"; content: "\f061"; font-weight: 600; margin-right: 10px; }
+.cpbpdf_ai_title_generate_api.ai-showonly-api li:hover,
+.cpbpdf_ai_title_generate_api_product.ai-showonly-api li:hover { background: #fff261; }
+body .ai-course-creation-body{ font-family: 'Open Sans', sans-serif; }
+
+.cpbpdf-ai-course-reference { margin-bottom: 20px; text-align: left; }
+.cpbpdf-ai-course-reference-main-heading { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+.cpbpdf-ai-course-reference-heading, .cpbpdf-ai-course-reference-goal { font-size: 16px; font-weight: normal; margin-top: 0; margin-bottom: 10px; color: #000; }
+.cpbpdf-ai-course-reference-subheading { font-size: 20px; font-weight: bold; margin-top: 0; margin-bottom: 5px; }
+.cpbpdf-ai-course-reference-divider { border: none; border-top: 1px solid #ccc; margin: 20px 0; }
+.cpbpdf_sidebar_popup.cpbpdf-ai-form-side-popup h4.cpbpdf-ai-course-reference-main-heading { background: transparent; padding: 0; border: none; }
+
+
+.tool-tip.ai-tooltip-description { display: block; }
+.tool-tip.ai-tooltip-description { display: block; margin-top: 10px; margin-bottom: 10px; }
+.tool-tip.ai-tooltip-description a.ai-tooltip-btn { text-decoration: none; }
+.tool-tip.ai-tooltip-description .toll-tip-desc { color: #000; font-size: 16px!important; }
+.tool-tip.ai-tooltip-description .ai-step-wrapper { border-bottom: 1px solid gainsboro; padding-bottom: 4px; margin-bottom: 10px; }
+.tool-tip.ai-tooltip-description .toll-tip-desc > strong { margin-bottom: 15px; display: block; font-size: 17px; }
+.tool-tip.ai-tooltip-description .ai-step-wrapper > span { font-weight: 600; }
+.tool-tip.ai-tooltip-description .toll-tip-desc:after { display: none; }
+
+
+a.cpb-new-btn.btn-pdf-ai-popup { padding: 5px 10px; font-size: 15px; margin: 0 10px 0; background: #fff261; color: #000; }
+a.cpb-new-btn.btn-pdf-ai-popup:hover { background: #ffcd00; color: #000; }
+.Manage_Side_Popup .edit-cpbpdf-ai-main-screen h2 { background: no-repeat; color: #000; border: none; padding: 0; }
+.Manage_Side_Popup .edit-cpbpdf-ai-main-screen h2.cpbpdf-ai-section-heading { font-size: 30px; }
+.Manage_Side_Popup .edit-cpbpdf-ai-main-screen.Manage_Side_Popup_content { overflow: auto; padding: 10px 20px; width: 100%; }
+
+
+.edit-cpbpdf-ai-main-screen .cpbpdf-ai-field-row { max-width: 740px; margin: 0 auto 20px; text-align: left; }
+.edit-cpbpdf-ai-main-screen .js-select2-wrapper span.select2.select2-container.select2-container--default { width: 100%!important; }
+.edit-cpbpdf-ai-main-screen .cpbpdf-ai-field-row .cpbpdf-ai-field-input:focus { border-color: #ffcd00; box-shadow: 0 0 0 1px #ffcd00; outline: none; }
+
+/* END AI */
+
+
+label.chatgpt-ai-type-inner > span { background: #fff261; padding: 10px 10px 10px 35px; border-radius: 5px; line-height: 1; min-width: 170px; display: block; position: relative; font-size: 14px; align-items: center; align-content: center; margin-bottom: -2px; }
+.chatgpt-ai-type-main { display: flex; gap: 15px; }
+label.chatgpt-ai-type-inner input[type="radio"]:checked + span { background: #ffcd00; }
+label.chatgpt-ai-type-inner input[type="radio"] { display: none; }
+label.chatgpt-ai-type-inner input[type="radio"]:checked + span:after { background: #000000; }
+label.chatgpt-ai-type-inner span:after { content: ""; position: absolute; height: 15px; width: 15px; background: #ffffff; left: 10px; top: 10px; border-radius: 100%; border: 3px solid #fff; -webkit-box-shadow: 0px 0px 0px 2px #0066ff; box-shadow: 0px 0px 0px 2px #96a0ae; }
+
+.quiz_right-content .radio-btn--outer {display: inline-block; width: auto; margin: 0 15px 0 0; padding: 0; vertical-align: top; font-weight: 600; }
+
+
+@media(max-height: 700px){
+	.cpb-ai-style-quiz-common-info.cpb-ai-active-screen{ justify-content: flex-start; }
+}

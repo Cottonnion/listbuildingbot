@@ -1,0 +1,3 @@
+<div class="lbb-single-button quick-reply-button lbb-single-answer-type-{{answer_type}}" style="" data-conversation-quick-reply-title="{{text_}}" data-currentactionid="{{current_question}}" data-nextactionid="{{next_question}}" data-tags="{{tags}}" data-ans-action="{{ans-action}}" data-diffchatflow="{{chatflow_id}}" data-ans-action-url="{{ans-action-url}}" data-repeat-ques="{{rep_ques}}">
+    <span class="quick-reply-text">{{text}}</span>
+</div>
