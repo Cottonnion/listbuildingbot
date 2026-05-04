@@ -497,7 +497,9 @@ function lbb_load_message_data(){
     $url = "";
     
     if($extra_info){
-        $extra_info = unserialize($extra_info);
+        $extra_info = unserialize( $extra_info, [ 'allowed_classes' => false ] );
+
+        if ( ! is_array( $extra_info ) ) { $extra_info = []; }
 
         
         $location = $extra_info['location'];
@@ -694,13 +696,16 @@ function lbb_read_unseen_messages(){
 
     global $wpdb;
 
-    $user_browser_info = $_POST['browser_uniq_id'];
+    $user_browser_info = sanitize_text_field( $_POST['browser_uniq_id'] ?? '' );
     $utc_time = gmdate('Y-m-d H:i:s');
 
-    $query_other = "SELECT m.*
+    $query_other = $wpdb->prepare(
+        "SELECT m.*
         FROM {$wpdb->prefix}lbb_messages as m JOIN {$wpdb->prefix}lbb_conversations as c ON c.conversation_id = m.conversation_id
-        WHERE TIMESTAMPDIFF(MINUTE, m.sent_time, '".$utc_time."') <= 5 and m.conversation_id != 0 and m.is_read = 0 and  m.is_bot_response <> 1 AND m.agent_id = 0 and c.status != 'L' AND c.is_published=1
-        ORDER BY m.message_id ASC";
+        WHERE TIMESTAMPDIFF(MINUTE, m.sent_time, %s) <= 5 and m.conversation_id != 0 and m.is_read = 0 and  m.is_bot_response <> 1 AND m.agent_id = 0 and c.status != 'L' AND c.is_published=1
+        ORDER BY m.message_id ASC",
+        $utc_time
+    );
 
      $unread_message_other = $wpdb->get_results($query_other);
      
@@ -744,11 +749,15 @@ function lbb_read_unseen_messages(){
     }
 
 
-    $query = "SELECT m.*
+    $query = $wpdb->prepare(
+        "SELECT m.*
         FROM {$wpdb->prefix}lbb_messages as m JOIN {$wpdb->prefix}lbb_conversations as c ON c.conversation_id = m.conversation_id
-        WHERE TIMESTAMPDIFF(MINUTE, m.sent_time, '".$utc_time."') <= 2 and m.conversation_id != 0 and m.is_read = 0 and  m.is_bot_response <> 1 AND m.agent_id = 0 and c.status = 'L' and 
-        m.notification_delivered NOT LIKE '%".$user_browser_info."%'
-        ORDER BY m.message_id ASC";
+        WHERE TIMESTAMPDIFF(MINUTE, m.sent_time, %s) <= 2 and m.conversation_id != 0 and m.is_read = 0 and  m.is_bot_response <> 1 AND m.agent_id = 0 and c.status = 'L' and 
+        m.notification_delivered NOT LIKE %s
+        ORDER BY m.message_id ASC",
+        $utc_time,
+        '%' . $wpdb->esc_like( $user_browser_info ) . '%'
+    );
 
 
     $unread_message = $wpdb->get_results($query);
@@ -994,15 +1003,16 @@ function lbb_user_notification_heartbeat(){
     lbb_access_control_allow_origin();
     global $wpdb;
     $table_name = $wpdb->prefix . 'lbb_messages';
-    $current_conv = isset($_POST['conversation_id']) ? $_POST['conversation_id'] : 0;
+    $current_conv = isset( $_POST['conversation_id'] ) ? intval( $_POST['conversation_id'] ) : 0;
 
 
     $conversations_unread = array();
     if ($current_conv != 0) {
            $conversations_unread = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT message_id, conversation_id, message_text, sent_time FROM $table_name WHERE is_read = %d AND (is_bot_response = 0 AND agent_id > 0) AND conversation_id = $current_conv ORDER BY sent_time DESC",
-                0
+                "SELECT message_id, conversation_id, message_text, sent_time FROM $table_name WHERE is_read = %d AND (is_bot_response = 0 AND agent_id > 0) AND conversation_id = %d ORDER BY sent_time DESC",
+                0,
+                $current_conv
             )
         );
 
@@ -1010,7 +1020,10 @@ function lbb_user_notification_heartbeat(){
 
 
 
-    $new_timezone = $_REQUEST['timezone'];
+    $allowed_timezones = timezone_identifiers_list();
+    $new_timezone = ( isset( $_REQUEST['timezone'] ) && in_array( $_REQUEST['timezone'], $allowed_timezones, true ) )
+        ? $_REQUEST['timezone']
+        : 'UTC';
     $unread_message_data = array();
     $messages_id_new = array();
     foreach ($conversations_unread as $conversation) {
@@ -1065,18 +1078,13 @@ function lbb_messages_update($convers_id = '', $messages_id_new = array()){
         $conversation_id = $convers_id;
     }
 
-    $message_ids = $_POST['message_ids'];
+    $message_ids = isset( $_POST['message_ids'] ) ? (array) $_POST['message_ids'] : [];
 
     if (!empty($convers_id)) {
         $message_ids = $messages_id_new;
     }
-    
-    
 
-
-    $escapedIds = array_map(function($id) use ($wpdb) {
-        return $wpdb->prepare('%s', $id);
-    }, $message_ids);
+    $escapedIds = array_filter( array_map( 'intval', $message_ids ) );
 
 
     /*$whereCondition = array(
@@ -1085,9 +1093,15 @@ function lbb_messages_update($convers_id = '', $messages_id_new = array()){
         '' => 'message_id IN (' . implode(',', $escapedIds) . ')'
     );*/
 
-   $wpdb_update_query =  "UPDATE $table_name SET `is_read` = '1' WHERE `is_read` = '0' AND `conversation_id` = $conversation_id AND message_id IN (" . implode(',', $escapedIds) . ")";
-
-   $last_updated_query = $wpdb->query($wpdb->prepare($wpdb_update_query));
+   if ( empty( $escapedIds ) ) {
+       return;
+   }
+   $placeholders = implode( ',', array_fill( 0, count( $escapedIds ), '%d' ) );
+   $wpdb_update_query = $wpdb->prepare(
+       "UPDATE $table_name SET `is_read` = '1' WHERE `is_read` = '0' AND `conversation_id` = %d AND message_id IN ($placeholders)",
+       array_merge( [ $conversation_id ], $escapedIds )
+   );
+   $wpdb->query( $wpdb_update_query );
 
     
     // Update the 'is_read' column for the specified message

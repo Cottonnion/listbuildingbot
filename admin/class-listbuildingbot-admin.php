@@ -65,35 +65,31 @@ class Listbuildingbot_Admin {
 		//add_action('admin_enqueue_scripts', array($this,'lbb_inline_styles_to_admin'));
 
 		add_action('wp_ajax_lbb_create_ai_bot', array($this,'createAiBot'));
-		add_action('wp_ajax_nopriv_lbb_create_ai_bot', array($this,'createAiBot'));
-
 		add_action('wp_ajax_lbb_upload_ass_file', array($this,'uploadAssFile'));
-		add_action('wp_ajax_nopriv_lbb_upload_ass_file', array($this,'uploadAssFile'));
-
 		add_action('wp_ajax_lbb_ass_files_save', array($this,'assSaveFile'));
-		add_action('wp_ajax_nopriv_lbb_ass_files_save', array($this,'assSaveFile'));
-
 		add_action('wp_ajax_lbb_ass_content_save', array($this,'assUpdateContent'));
-		add_action('wp_ajax_nopriv_lbb_ass_content_save', array($this,'assUpdateContent'));
-
 		add_action('wp_ajax_lbb_delete_ass_file', array($this,'assDeleteFile'));
-		add_action('wp_ajax_nopriv_lbb_delete_ass_file', array($this,'assDeleteFile'));
-
 		add_action('wp_ajax_lbb_save_faqs', array($this,'saveFaqs'));
-		add_action('wp_ajax_nopriv_lbb_save_faqs', array($this,'saveFaqs'));
-
 		add_action('wp_ajax_lbb_faq_add', array($this,'addNewFaqs'));
-		add_action('wp_ajax_nopriv_lbb_faq_add', array($this,'addNewFaqs'));
 		
 
 		
 	}
 
+	private function lbb_require_admin() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 );
+			exit;
+		}
+		check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+	}
+
 	public function addNewFaqs(){
+		$this->lbb_require_admin();
 
 		global $wpdb;
-		$question = $_POST['question'];
-		$answer = $_POST['answer'];
+		$question = sanitize_text_field( $_POST['question'] );
+		$answer = sanitize_textarea_field( $_POST['answer'] );
 		$id = $wpdb->insert($wpdb->prefix.'lbb_faq_master', array(
 			'question' => $question,
 			'answer' => $answer
@@ -104,11 +100,12 @@ class Listbuildingbot_Admin {
 	}
 
 	public function saveFaqs(){
+		$this->lbb_require_admin();
 
 		global $wpdb;
 		$post = json_decode(file_get_contents("php://input"), true);
 
-		$chatflow_id = $_REQUEST['chatflow_id'];
+		$chatflow_id = intval( $_REQUEST['chatflow_id'] );
 
 		
 		$ids = array();
@@ -139,9 +136,10 @@ class Listbuildingbot_Admin {
 	}
 
 	public function assDeleteFile(){
+		$this->lbb_require_admin();
 
-		$chatflow_id = $_REQUEST['chatflow_id'];
-		$file_id = $_POST['file_id'];
+		$chatflow_id = intval( $_REQUEST['chatflow_id'] );
+		$file_id = sanitize_text_field( $_POST['file_id'] );
 		
 
 
@@ -157,10 +155,11 @@ class Listbuildingbot_Admin {
 	}
 
 	public function assUpdateContent(){
+		$this->lbb_require_admin();
 		
-		$assistantId = $_REQUEST['ai_assistant_id'];
-		$respone_msg = $_REQUEST['respone_msg'];
-		$aiassistant_rules = $_REQUEST['aiassistant_rules'];
+		$assistantId = sanitize_text_field( $_REQUEST['ai_assistant_id'] );
+		$respone_msg = sanitize_text_field( $_REQUEST['respone_msg'] );
+		$aiassistant_rules = sanitize_textarea_field( $_REQUEST['aiassistant_rules'] );
 
 		$aiassistant_rules = $aiassistant_rules."\n\n"."Important:\nYou are assisting real users with a helpful response. Do not mention anything about the keyword missing in the uploaded files because users are not aware of file upload. That's something users do. That's what admins do in the backend to uploaded data to the custom trained bot.\n\n";
 
@@ -176,10 +175,10 @@ class Listbuildingbot_Admin {
 	
 
 	public function assSaveFile(){
+		$this->lbb_require_admin();
 
-		ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+		// Debug output disabled in production
+		// ini_set('display_errors', 1);
 
 		$input = json_decode(file_get_contents("php://input"), true);
 
@@ -273,6 +272,7 @@ class Listbuildingbot_Admin {
 	}
 
 	public function uploadAssFile(){
+		$this->lbb_require_admin();
 		if (!empty($_FILES['file']['name'])) {
 			$file = $_FILES['file'];
 	
@@ -305,7 +305,7 @@ class Listbuildingbot_Admin {
 	}
 
 	public function createAiBot(){
-		
+		$this->lbb_require_admin();
 
 		$request_data = file_get_contents('php://input');
 		$data = json_decode($request_data, true);
@@ -1488,7 +1488,7 @@ class Listbuildingbot_Admin {
 
 		wp_localize_script( 'listbuildingbot-admin-all-pages', "adminConfig", $admin_config );
 
-		wp_localize_script('listbuildingbot-admin-all-pages', 'lbb_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) , 'lbb_path' => LBB_URL) ); 
+		wp_localize_script('listbuildingbot-admin-all-pages', 'lbb_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'lbb_path' => LBB_URL, 'nonce' => wp_create_nonce( 'lbb_admin_nonce' ) ) ); 
 
 
 		$lbb_livechat_options = get_option('lbb_livechat_options', 'ajax_based');
@@ -1552,7 +1552,7 @@ class Listbuildingbot_Admin {
 			}
 			wp_enqueue_script( 'lbb-sweetalert', '//cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js', array( 'jquery' ), $this->version, false );
 		}
-		wp_localize_script($this->plugin_name, 'lbb_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) , 'lbb_path' => LBB_URL) ); 
+		wp_localize_script($this->plugin_name, 'lbb_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'lbb_path' => LBB_URL, 'nonce' => wp_create_nonce( 'lbb_admin_nonce' ) ) ); 
 		if(isset($_GET['page']) && $_GET['page'] == 'listbuildingbot-conversation'){
 			wp_enqueue_script( 'lbb-conversations', plugin_dir_url( __FILE__ ) . 'js/conversations.js', array( 'jquery' ), $this->version, false );
 		}

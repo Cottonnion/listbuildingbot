@@ -253,6 +253,7 @@ class Listbuildingbot_Public {
 	}
 
 	public function handleAudioUpload(){
+		check_ajax_referer( 'listbuildingbot_ajax_nonce', 'nonce' );
 		lbb_access_control_allow_origin();
 		$audioData = $_POST['audio'];
 		$upload_dir = wp_upload_dir();
@@ -289,6 +290,7 @@ class Listbuildingbot_Public {
 
 	public function handleAttachmentUpload($chatflow_id){
 
+		check_ajax_referer( 'listbuildingbot_ajax_nonce', 'nonce' );
 		lbb_access_control_allow_origin();
 		// Check if a file was uploaded
 		if (isset($_FILES['image'])) {

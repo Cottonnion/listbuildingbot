@@ -1,7 +1,11 @@
 <?php
 add_action('wp_ajax_lbb_clone_question', 'lbb_clone_question');
 function lbb_clone_question(){
-  $post_id = $_REQUEST['question_id'];
+  if ( ! current_user_can( 'manage_options' ) ) {
+    wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 ); exit;
+  }
+  check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+  $post_id = intval( $_REQUEST['question_id'] );
   $post = get_post($post_id);
   if (!isset($post) || $post == null) {
     return;

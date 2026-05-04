@@ -1,8 +1,12 @@
 <?php
 add_action('wp_ajax_lbb_generate_outcomes', 'lbb_generate_outcomes');
-add_action('wp_ajax_nopriv_lbb_generate_outcomes', 'lbb_generate_outcomes');
 
 function lbb_generate_outcomes(){
+
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 ); exit;
+    }
+    check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
 
     $prompt = !empty($_POST['prompt']) ? $_POST['prompt'] : '';
     
@@ -67,10 +71,14 @@ function lbb_generate_outcomes(){
 }
 
 add_action('wp_ajax_lbb_create_questions', 'lbb_create_questions');
-add_action('wp_ajax_nopriv_lbb_create_questions', 'lbb_create_questions');
 
 function lbb_create_questions(){
-    
+
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 ); exit;
+    }
+    check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+
     $prompt = !empty($_POST['prompt']) ? $_POST['prompt'] : '';
     
     $prompt = str_replace('json[','```json[',$prompt);

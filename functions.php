@@ -1539,6 +1539,62 @@ if (!function_exists('LBBCheckFOpen')) {
 }
 
 /**
+ * SSRF protection — validates a URL is an external, public HTTP/HTTPS URL.
+ * Blocks private/loopback IPs, cloud metadata endpoints, and non-http schemes.
+ * Calls wp_die() with a 403 if the URL is unsafe.
+ */
+if ( ! function_exists( 'lbb_validate_ssrf_url' ) ) {
+    function lbb_validate_ssrf_url( $url ) {
+        $url = trim( $url );
+
+        if ( empty( $url ) ) {
+            wp_send_json_error( array( 'message' => 'URL is required.' ), 400 );
+            exit;
+        }
+
+        $parsed = wp_parse_url( $url );
+
+        // Only allow http and https schemes
+        if ( empty( $parsed['scheme'] ) || ! in_array( strtolower( $parsed['scheme'] ), array( 'http', 'https' ), true ) ) {
+            wp_send_json_error( array( 'message' => 'Invalid URL scheme.' ), 400 );
+            exit;
+        }
+
+        $host = strtolower( $parsed['host'] ?? '' );
+
+        if ( empty( $host ) ) {
+            wp_send_json_error( array( 'message' => 'Invalid URL.' ), 400 );
+            exit;
+        }
+
+        // Resolve host to IP and block private/loopback ranges
+        $ip = gethostbyname( $host );
+
+        $blocked_ranges = array(
+            '127.',        // loopback
+            '10.',         // RFC1918
+            '192.168.',    // RFC1918
+            '169.254.',    // link-local / AWS metadata
+            '0.',          // unspecified
+            '::1',         // IPv6 loopback
+        );
+
+        foreach ( $blocked_ranges as $range ) {
+            if ( strpos( $ip, $range ) === 0 ) {
+                wp_send_json_error( array( 'message' => 'URL not allowed.' ), 400 );
+                exit;
+            }
+        }
+
+        // Block 172.16.0.0 - 172.31.255.255 (RFC1918)
+        if ( preg_match( '/^172\.(1[6-9]|2[0-9]|3[0-1])\./', $ip ) ) {
+            wp_send_json_error( array( 'message' => 'URL not allowed.' ), 400 );
+            exit;
+        }
+    }
+}
+
+/**
  * Error email — disabled. No longer emails site data to vendor.
  */
 if(!function_exists('sendLicensingErrorEmail')) {
@@ -2617,14 +2673,26 @@ function lbb_get_chat_mode($chatflow_id,$conversation_id = ''){
 
 function llb_get_country_code_byid($ipaddress) {
 
+    // Validate IP address before sending to any remote service.
+    if ( ! filter_var( $ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) ) {
+        return '';
+    }
+
     $return_data = '';
-    $ip_data = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ipaddress));
-    if ($ip_data && $ip_data->geoplugin_countryName != null) {
-        $return_data= $ip_data->geoplugin_countryCode;
-    }else{
-        $ip_data = @json_decode(file_get_contents("https://ipfind.co?ip=" . $ipaddress));
-        if ($ip_data && $ip_data->country != null) {
-            $return_data = $ip_data->country_code;
+    $response = wp_remote_get( 'https://www.geoplugin.net/json.gp?ip=' . rawurlencode( $ipaddress ), [ 'timeout' => 5 ] );
+    if ( ! is_wp_error( $response ) ) {
+        $ip_data = json_decode( wp_remote_retrieve_body( $response ) );
+        if ( $ip_data && ! empty( $ip_data->geoplugin_countryName ) ) {
+            $return_data = sanitize_text_field( $ip_data->geoplugin_countryCode );
+        }
+    }
+    if ( $return_data === '' ) {
+        $response2 = wp_remote_get( 'https://ipfind.co?ip=' . rawurlencode( $ipaddress ), [ 'timeout' => 5 ] );
+        if ( ! is_wp_error( $response2 ) ) {
+            $ip_data = json_decode( wp_remote_retrieve_body( $response2 ) );
+            if ( $ip_data && ! empty( $ip_data->country ) ) {
+                $return_data = sanitize_text_field( $ip_data->country_code );
+            }
         }
     }
 

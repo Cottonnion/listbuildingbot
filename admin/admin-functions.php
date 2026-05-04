@@ -61,6 +61,84 @@ function add_custom_admin_body_class($classes) {
 
 add_filter('admin_body_class', 'add_custom_admin_body_class');
 
+// ─── Centralized nonce + capability guard for all admin AJAX actions ─────────
+add_action( 'init', function () {
+    if ( ! wp_doing_ajax() ) {
+        return;
+    }
+    $action = isset( $_REQUEST['action'] ) ? (string) $_REQUEST['action'] : '';
+    $lbb_admin_actions = [
+        'save_action_data',
+        'lbb_fetching_url',
+        'lbb_fetching_single_url',
+        'lbb_load_chatflows',
+        'lbb_load_questions',
+        'lbb_ai_text_content',
+        'lbb_upload_document_loop',
+        'lbb_save_chatflow_postmeta',
+        'save_chatflow_actions',
+        'save_form_settings_data',
+        'save_global_form_settings_data',
+        'save_automation_data',
+        'load_automation_data',
+        'lbb_close_livechat_ajax_requests',
+        'load_automation_listing',
+        'save_message_customizer_data',
+        'lbb_save_pdf_headerfooter_settings_data',
+        'save_notification_setting_data',
+        'save_email_notifications_data',
+        'load_customfield_data_by_id',
+        'delete_customfield_data',
+        'load_customfield_data',
+        'save_customfield_data',
+        'lbb_check_firebase',
+        'save_firebase_data',
+        'save_aiassistant_data',
+        'save_contactform_data',
+        'save_fuzzysearch_data',
+        'save_gdpr_data',
+        'save_load_outcomes_data',
+        'save_outcomes_data',
+        'load_outcomes_data',
+        'delete_outcomes_data',
+        'load_outcomes_data_by_id',
+        'save_tags_data',
+        'load_tags_data',
+        'delete_tags_data',
+        'delete_posttype_chatflow',
+        'export_posttype_chatflow',
+        'lbb_update_status',
+        'lbb_update_selected_url',
+        'lbb_load_all_pages',
+        'load_tags_data_by_id',
+        'save_automation_listings_data',
+        'lbb_autoresponder_test_webhook',
+        'lbb_save_checked_customfield_ids',
+        'lbb_load_chatflow_styles',
+        'lbb_load_global_styles',
+        'lbb_load_contacts_data',
+        'lbb_show_pagination',
+        'save_mapping_data',
+        'load_mapping_data',
+        'chatflow_mapping_data',
+        'lbb_duplicate_post',
+        'lbb_import_json',
+        'lbb_load_user_data',
+        'lbb_clone_question',
+        'lbb_delete_conversation',
+        'lbb_load_selected_pages',
+        'lbb_check_pages_in_minimized',
+    ];
+    if ( ! in_array( $action, $lbb_admin_actions, true ) ) {
+        return;
+    }
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( [ 'message' => 'Insufficient permissions.' ], 403 );
+        exit;
+    }
+    check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+}, 1 );
+
 add_action('wp_ajax_save_action_data', 'save_action_data');
 function save_action_data(){
  
@@ -153,12 +231,22 @@ function save_action_data(){
 
 add_action('wp_ajax_lbb_fetching_url', 'lbb_fetching_url');
 function lbb_fetching_url(){
+   if ( ! current_user_can( 'manage_options' ) ) {
+     wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 ); exit;
+   }
+   check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+   lbb_validate_ssrf_url( $_POST['url'] ?? '' );
    include(LBB_ABS_URL.'/lib/ai/listbuildingbot-scrape-url.php');
    exit;
 }
 
 add_action('wp_ajax_lbb_fetching_single_url', 'lbb_fetching_single_url');
 function lbb_fetching_single_url(){
+   if ( ! current_user_can( 'manage_options' ) ) {
+     wp_send_json_error( array( 'message' => 'Unauthorized' ), 403 ); exit;
+   }
+   check_ajax_referer( 'lbb_admin_nonce', 'nonce' );
+   lbb_validate_ssrf_url( $_POST['url'] ?? '' );
    include(LBB_ABS_URL.'/lib/ai/listbuildingbot-scrape-single-url.php');
    exit;
 }
