@@ -1,6 +1,5 @@
 <?php
 
-
 function lbb_is_tags($conversation_id, $tags){
     global $wpdb;
     
