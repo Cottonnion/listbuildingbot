@@ -68,7 +68,6 @@ function lbb_clear_conversation($conversation_id){
     $wpdb->query($query);
 
 }
-
 function lbb_get_message($key,$chatflow_id = 0){
     global $lbb_messages;
     if(empty($lbb_messages)){
